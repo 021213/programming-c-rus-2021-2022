@@ -1,0 +1,20 @@
+1.
+IDE -
+Integrated Development Environment
+Интегрированная среда разработки
+https://visualstudio.microsoft.com/ru/vs/
+https://www.dev-cpp.com/
+
+2.
+Git
+https://git-scm.com/download/win
+https://github.com/
+
+3.
+git add --all
+git config --global user.email st??????@student.spbu.ru
+git config --global user.name st??????
+git commit --all --message "Initial code upload"
+git push
+
+4. StyleGuide
