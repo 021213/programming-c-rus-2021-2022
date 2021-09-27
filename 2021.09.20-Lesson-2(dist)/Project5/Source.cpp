@@ -9,18 +9,17 @@ int main(int argc, char* argv[])
 
 	cin >> a >> b;
 
+	cout << (a > b ? a : b) << endl;
+	/*
 	if (a > b)
 	{
 		cout << a << endl;
 	}
-	else if (b > a)
+	else
 	{
 		cout << b << endl;
 	}
-	else
-	{
-		cout << "EQUALS" << endl;
-	}
+	*/
 
 	return EXIT_SUCCESS;
 }
