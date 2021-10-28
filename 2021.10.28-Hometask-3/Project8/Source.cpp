@@ -5,12 +5,13 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	int n = 0;
-	cin >> n;
-	int fact = 1;
-	for (int i = 2; i <= n; ++i)
+	int sum = 0;
+	for (int i = 0; i < n; ++i)
 	{
-		fact *= i;
+		int x = 0;
+		cin >> x;
+		sum += x;
 	}
-	cout << fact;
+	cout << sum;
 	return EXIT_SUCCESS;
 }

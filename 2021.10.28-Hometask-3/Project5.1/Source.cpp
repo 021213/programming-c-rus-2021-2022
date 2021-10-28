@@ -6,11 +6,13 @@ int main(int argc, char* argv[])
 {
 	int n = 0;
 	cin >> n;
-	int fact = 1;
-	for (int i = 2; i <= n; ++i)
+	for (int i = 1; i <= n / 2; ++i)
 	{
-		fact *= i;
+		if (n % i == 0)
+		{
+			cout << i << endl;
+		}
 	}
-	cout << fact;
+	cout << n << endl;
 	return EXIT_SUCCESS;
 }
