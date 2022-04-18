@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+
 class Vector3D
 {
 private:
