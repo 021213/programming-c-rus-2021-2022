@@ -21,7 +21,13 @@ private:
 	Node* head;
 	Node* tail;
 	int count;
+
+	bool indexValid(int index);
 	Node*& nodeByIndex(int index);
+	
+	void insertNode(Node*& node, int index);
+	Node*& extractNode(int index);
+
 public:
 	LinkedList() : head(nullptr), tail(nullptr), count(0) {}
 	~LinkedList();

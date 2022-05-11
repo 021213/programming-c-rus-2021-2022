@@ -20,6 +20,74 @@ std::ostream& operator<<(std::ostream& stream, const LinkedList& list)
 	return stream;
 }
 
+bool LinkedList::indexValid(int index)
+{
+	return index >= 0 && index < count;
+}
+
+Node*& LinkedList::nodeByIndex(int index)
+{
+	if (!indexValid(index))
+	{
+		return new Node();
+	}
+	Node* temp = head;
+	for (int i = 0; i < index; ++i)
+	{
+		temp = temp->next;
+	}
+	return temp;
+}
+
+void LinkedList::insertNode(Node*& node, int index)
+{
+	if (!indexValid(index))
+	{
+		return;
+	}
+	if (index == 0)
+	{
+		node->next = head;
+		head = node;
+		++count;
+		return;
+	}
+	Node* temp = head;
+	for (int i = 0; i < index - 1; ++i)
+	{
+		temp = temp->next;
+	}
+	node->next = temp->next;
+	temp->next = node;
+	++count;
+}
+
+Node*& LinkedList::extractNode(int index)
+{
+	if (!indexValid(index))
+	{
+		return new Node();
+	}
+	if (index == 0)
+	{
+		Node* res = head;
+		head = head->next;
+		res->next = nullptr;
+		--count;
+		return res;
+	}
+	Node* temp = head;
+	for (int i = 0; i < index - 1; ++i)
+	{
+		temp = temp->next;
+	}
+	Node* res = temp->next;
+	temp->next = temp->next->next;
+	--count;
+	res->next = nullptr;
+	return res;
+}
+
 LinkedList::~LinkedList()
 {
 	while (head != nullptr)
@@ -57,6 +125,43 @@ void LinkedList::pushTail(int element)
 	tail->next = new Node(element);
 	tail = tail->next;
 	++count;
+}
+
+void LinkedList::insert(int element, int index)
+{
+	if (!indexValid(index))
+	{
+		return;
+	}
+	insertNode(new Node(element), index);
+}
+
+int LinkedList::extract(int index)
+{
+	if (!indexValid(index))
+	{
+		return 0;
+	}
+	Node* temp = extractNode(index);
+	int res = temp->data;
+	delete temp;
+	return res;
+}
+
+void LinkedList::swap(int index1, int index2)
+{
+	if (!indexValid(index1) || !indexValid(index2) || (index1 == index2))
+	{
+		return;
+	}
+	if (index1 > index2)
+	{
+		return swap(index2, index1);
+	}
+	Node* node2 = extractNode(index2);
+	Node* node1 = extractNode(index1);
+	insertNode(node2, index1);
+	insertNode(node1, index2);
 }
 
 int LinkedList::popHead()
